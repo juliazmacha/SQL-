@@ -1,0 +1,27 @@
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, color TEXT, rating REAL, price REAL); 
+INSERT INTO store VALUES (1, "bike", "blue", 4.9, 299.99); 
+INSERT INTO store VALUES (2, "trumpet", "gold", 2.3, 30.70);
+INSERT INTO store VALUES (3, "dog", "brown", 5.6, 200.3);
+INSERT INTO store VALUES (4, "cat", "white", 2.3, 90.80);
+INSERT INTO store VALUES (5, "book", "black", 2.4, 5.99);
+INSERT INTO store VALUES (6, "orange", "orange", 8.9, 1.99);
+INSERT INTO store VALUES (7, "lamp", "silver", 1.8, 800.00);
+INSERT INTO store VALUES (8, "water", "blue", 2.8, 11.80);
+INSERT INTO store VALUES (9, "juice", "gold", 2.4, 20.40);
+INSERT INTO store VALUES (10, "fridge", "silver", 2.3, 9000.00);
+INSERT INTO store VALUES (11, "table", "white", 2.9, 50.00);
+INSERT INTO store VALUES (12, "chair", "pink", 3.7, 20.00);
+INSERT INTO store VALUES (13, "guitar", "brown", 2.3, 70.80);
+INSERT INTO store VALUES (14, "box", "brown", 4.8, 78.94);
+INSERT INTO store VALUES (15, "big box", "brown", 5.3, 200.00);
+
+SELECT* FROM store; 
+
+How much do all products cost?
+SELECT SUM(price) FROM store; 
+
+Show products from the most expensive to the cheapest
+SELECT price, name FROM store ORDER BY price DESC;
+
+What is the avg price of items/ 
+SELECT AVG(price) FROM store; 
