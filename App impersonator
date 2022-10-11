@@ -1,0 +1,17 @@
+CREATE TABLE apps (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, app_store TEXT); 
+
+INSERT INTO apps (name, price, app_store) VALUES ("DuckDuckGo", 0.00, "Applestore"); 
+INSERT INTO apps (name, price, app_store) VALUES ("Duolingo", 4.99, "Applestore");
+INSERT INTO apps (name, price, app_store) VALUES ("Facebook Messenger", 0.00, "Applestore");
+INSERT INTO apps (name, price, app_store) VALUES ("Google Translate", 2.89, "Googlestore");
+INSERT INTO apps (name, price, app_store) VALUES ("LingoDeer", 11.99, "Googlestore");
+
+SELECT * FROM apps; 
+
+UPDATE apps SET app_store = "Chinstore" WHERE id = 3; 
+
+SELECT * FROM apps; 
+
+DELETE FROM apps WHERE id = 1; 
+
+SELECT * FROM apps; 
