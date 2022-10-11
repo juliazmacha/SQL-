@@ -1,0 +1,58 @@
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, hobby TEXT);  
+
+INSERT INTO famous_people (name, age, hobby) VALUES ("Justin Bieber", 28, "swimming");
+INSERT INTO famous_people (name, age, hobby) VALUES ("Selena Gomez", 30, "tenis");  
+INSERT INTO famous_people (name, age, hobby) VALUES ("Taylor Swift", 32, "singing"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Elton John", 75, "art");  
+INSERT INTO famous_people (name, age, hobby)  VALUES ("Kim kardashian", 41, "makeup");
+INSERT INTO famous_people (name, age, hobby) VALUES ("Kylie Jenner", 25, "dancing"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Rita Ora", 31, "art") ;
+INSERT INTO famous_people (name, age, hobby) VALUES ("Johnny Depp", 59, "shopping"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Brad Pitt", 58, "rock climbing"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Orlando Bloom", 45, "swimming"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Tom Cruise", 60, "running"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Camille Vasquez", 33, "swimming"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Leonardo DiCaprio", 47, "swimming"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Freddie Highmore", 30, "driving fast cars"); 
+INSERT INTO famous_people (name, age, hobby) VALUES ("Helena Bonham Carter", 56, "running");
+
+SELECT * FROM famous_people; 
+
+CREATE TABLE famous_people_partner (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, pertner_id INTEGER, hobby TEXT); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES ("Hailey Bieber", 1, "swimming"); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES (NULL, 2, NULL); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES (NULL, 3, NULL); 
+INSERT INTO famous_people_partner  (name, pertner_id, hobby) VALUES (" David Furnish", 4, "fashion");  
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES ("Ye", 5, "rowing"); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES (NULL, 6, NULL);
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES (NULL, 7, NULL);
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES ("Amber Heard", 8, "swimming");
+INSERT INTO famous_people_partner (name, pertner_id, hobby)  VALUES ("Angelina Jolie", 9, "singing"); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES ("Katy Perry", 10, "swimming"); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES ("Katie Holmes", 11, "rock climbing");  
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES (NULL, 12, NULL); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES (NULL, 13, NULL); 
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES (NULL, 14, NULL);  
+INSERT INTO famous_people_partner (name, pertner_id, hobby) VALUES (NULL, 15, NULL); 
+
+
+SELECT * FROM famous_people_partner;  
+
+-- Show a list of famous people and their partners
+SELECT famous_people.name, famous_people_partner.name 
+FROM famous_people 
+JOIN famous_people_partner
+ON famous_people.id = famous_people_partner.pertner_id;
+
+-- Which people do not have a partner or their parenter is unknown? Make a list.
+SELECT famous_people.name, famous_people_partner.name 
+FROM famous_people 
+LEFT JOIN famous_people_partner
+ON famous_people.id = famous_people_partner.pertner_id
+WHERE famous_people_partner.name IS NULL; 
+
+--Which people like swimming?
+SELECT famous_people.name, famous_people.hobby, famous_people_partner.name, famous_people_partner.hobby 
+FROM famous_people
+LEFT JOIN famous_people_partner
+WHERE famous_people.hobby = "swimming" AND famous_people_partner.hobby = "swimming"; 
