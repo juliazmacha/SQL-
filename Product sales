@@ -45,3 +45,9 @@ FROM BIT_DB.JanSales
 WHERE location LIKE '%New York%'
 GROUP BY location 
 HAVING orders_nr >=3; 
+
+--What was the average amount spent per account in February?
+SELECT AVG(quantity*price) 
+FROM BIT_DB.customers cust 
+LEFT JOIN BIT_DB.FebSales feb 
+ON cust.order_id = feb.orderID;
