@@ -58,3 +58,9 @@ SELECT AVG(quantity*price)
 FROM BIT_DB.customers cust 
 LEFT JOIN BIT_DB.FebSales feb 
 ON cust.order_id = feb.orderID;
+
+--Which product brought in the most revenue in January and how much revenue did it bring in total?
+SELECT product, SUM(quantity*price) as revenue 
+FROM BIT_DB.JanSales 
+GROUP BY product 
+ORDER BY revenue DESC LIMIT 1; 
