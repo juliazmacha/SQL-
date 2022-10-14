@@ -33,6 +33,13 @@ LEFT JOIN BIT_DB.customers cust
 ON feb.orderID = cust.order_id
 WHERE feb.quantity >2; 
 
+--What was the average quantity of products purchased per account in February?
+SELECT  SUM(quantity)/COUNT(cust.acctnum) AS quantity_of_products_purchased_per_account
+FROM BIT_DB.customers cust 
+LEFT JOIN BIT_DB.FebSales feb 
+ON cust.order_id = feb.orderID;
+
+
 --List all the products sold in Los Angeles in February, and include how many of each were sold.
 SELECT product, SUM(quantity)
 FROM BIT_DB.FebSales 
