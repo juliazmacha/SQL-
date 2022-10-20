@@ -54,3 +54,9 @@ SELECT COUNT (*), popularity
 FROM BIT_DB.Spotifydata
 WHERE popularity>90
 GROUP BY popularity; 
+
+--Select 5 songs with the highest energy and liveness. 
+SELECT track_name, energy, liveness
+FROM BIT_DB.Spotifydata
+ORDER BY energy DESC, liveness DESC 
+LIMIT 5; 
