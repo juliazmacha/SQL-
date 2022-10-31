@@ -1,0 +1,23 @@
+CREATE TABLE alcohol_consumption (
+country TEXT,
+beer_servings INTEGER,
+spirit_servings INTEGER,
+wine_servings INTEGER,
+total_litres_of_pure_alcohol REAL
+);
+SELECT * FROM alcohol_consumption LIMIT 20; 
+
+--1--In which country the most liters of alcohol are consumed?
+SELECT country, MAX(total_litres_of_pure_alcohol)
+FROM ac.alcohol_consumption; 
+
+--2--Name the 10 countries where spirit servings are the largest.
+SELECT country, spirit_servings
+FROM ac.alcohol_consumption
+ORDER BY spirit_servings DESC 
+LIMIT 10; 
+
+--3-- In which countries is wine serving greater than beer servings and spirit servings together?
+SELECT country, wine_servings, (beer_servings*spirit_servings) AS beer_and_spirit_ser
+FROM ac.alcohol_consumption
+WHERE wine_servings > beer_servings*spirit_servings; 
