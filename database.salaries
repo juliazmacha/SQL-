@@ -1,0 +1,45 @@
+-- First, I insert data to database.salaries and check if everything works correctly by entering the SELECT * FROM database.salaries formula;
+SELECT * FROM database.salaries; 
+
+-- How much is the overtime pay and other pay of each battalion chief, (fire department)?
+SELECT overtimepay, otherpay 
+FROM database.salaries
+WHERE jobtitle = "BATTALION CHIEF, (FIRE DEPARTMENT)"; 
+
+-- Which employees earn the most base pay, what are their names, what positions do they hold and how much is their basepay? Exclude empty cells and not provided data.
+SELECT employeename, basepay, jobtitle
+FROM database.salaries
+WHERE basepay != "" AND basepay !="Not provided" AND employeename !="Not provided" AND jobtitle !="Not provided"
+ORDER BY basepay DESC; 
+
+-- Who doesn't work overtime, what is their job title and name? Count how many such employees there are.
+SELECT employeename, jobtitle, overtimepay 
+FROM database.salaries
+WHERE overtimepay = 0; 
+
+SELECT COUNT(overtimepay) 
+FROM database.Salaries 
+WHERE overtimepay = 0; 
+
+--OR 
+
+SELECT countsum, employeename, jobtitle, overtimepay 
+FROM database.salaries, 
+(SELECT COUNT(*) AS countsum FROM database.salaries WHERE overtimepay = 0) 
+WHERE overtimepay = 0; 
+
+--Who's other pay is more than base pay? What is the difference? Order by difference ascending. 
+SELECT employeename, otherpay, basepay, otherpay - basepay AS base_and_otherpay_difference 
+FROM database.salaries
+WHERE otherpay > basepay 
+ORDER BY base_and_otherpay_difference ASC; 
+
+-- Sort employees by the first letter of the last name in ascending order.
+SELECT employeename
+FROM database.salaries
+ORDER BY SUBSTR(employeename, INSTR(employeename, ' '))
+
+--How many employees are there for each position - count how many employees are in one job title group.
+SELECT jobtitle, COUNT(employeename)
+FROM database.salaries
+GROUP BY jobtitle; 
