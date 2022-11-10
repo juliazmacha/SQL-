@@ -13,16 +13,6 @@ WHERE basepay != "" AND basepay !="Not provided" AND employeename !="Not provide
 ORDER BY basepay DESC; 
 
 -- Who doesn't work overtime, what is their job title and name? Count how many such employees there are.
-SELECT employeename, jobtitle, overtimepay 
-FROM database.salaries
-WHERE overtimepay = 0; 
-
-SELECT COUNT(overtimepay) 
-FROM database.Salaries 
-WHERE overtimepay = 0; 
-
---OR 
-
 SELECT countsum, employeename, jobtitle, overtimepay 
 FROM database.salaries, 
 (SELECT COUNT(*) AS countsum FROM database.salaries WHERE overtimepay = 0) 
