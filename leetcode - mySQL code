@@ -23,3 +23,9 @@ WHERE referee_id !=2 OR referee_id IS NULL;
 
 --Write an SQL query to report all customers who never order anything.
 --Return the result table in any order.
+
+SELECT c.name as Customers
+FROM Customers c 
+LEFT JOIN Orders o 
+ON c.id = o.customerid
+WHERE o.id IS NULL; 
