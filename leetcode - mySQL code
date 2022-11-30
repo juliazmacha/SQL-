@@ -41,3 +41,9 @@ ORDER BY employee_id;
 --Write an SQL query to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
 UPDATE Salary SET sex = (CASE sex WHEN "m" THEN "f" ELSE "m" END);
 
+-- Write an SQL query to fix the names so that only the first character is uppercase and the rest are lowercase.
+--Return the result table ordered by user_id.
+SELECT user_id, CONCAT(UPPER(SUBSTRING(name,1,1)),LOWER(SUBSTRING(name,2))) AS name 
+FROM Users
+ORDER BY user_id; 
+
